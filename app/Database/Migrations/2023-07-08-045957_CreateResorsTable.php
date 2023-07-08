@@ -17,7 +17,7 @@ class CreateResorsTable extends Migration
                 'auto_increment' => true,
             ],
             'kode_resor' => [
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'constraint' => 20,
                 'comment' => 'Kode Resor'
             ],

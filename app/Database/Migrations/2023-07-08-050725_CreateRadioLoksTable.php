@@ -17,17 +17,28 @@ class CreateRadioLoksTable extends Migration
                 'auto_increment' => true,
             ],
             'seri_lokomotif' => [
-                'type' => 'INT',
-                'constraint' => 20,
+                'type' => 'VARCHAR',
+                'constraint' => 50,
                 'comment' => 'Seri Lokomotif'
             ],
             'tanggal' => [
-                'type' => 'TIMESTAMP',
+                'type' => 'DATETIME',
             ],
             'ralok_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+            ],
+            'resor_id' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 20,
                 'unsigned' => true,
+                'comment' => 'id Resor'
+            ],
+            'pnc_id' => [
+                'type' => 'INT',
+                'constraint' => 20,
+                'unsigned' => true,
+                'comment' => 'id pnc'
             ],
             'rtc_call' => [
                 'type' => 'BOOLEAN',
@@ -76,7 +87,9 @@ class CreateRadioLoksTable extends Migration
         ];
         $this->forge->addField($fields);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('ralok_id', 'data_asets', 'id_ralok');
+        // $this->forge->addForeignKey('ralok_id', 'data_asets', 'id_ralok');
+        $this->forge->addForeignKey('resor_id', 'resors', 'id');
+        $this->forge->addForeignKey('pnc_id', 'pnc', 'id');
         $this->forge->createTable('radio_loks', true);
     }
 

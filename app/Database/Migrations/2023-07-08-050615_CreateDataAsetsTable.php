@@ -10,11 +10,15 @@ class CreateDataAsetTable extends Migration
     public function up()
     {
         $fields = [
-            'id_ralok' => [
+            'id' => [
                 'type' => 'INT',
                 'constraint' => 20,
                 'unsigned' => true,
                 'auto_increment' => true,
+            ],
+            'id_ralok' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
                 'comment' => 'ID Ralok'
             ],
             'tipe_ralok' => [
@@ -36,7 +40,7 @@ class CreateDataAsetTable extends Migration
             ],
         ];
         $this->forge->addField($fields);
-        $this->forge->addKey('id_ralok', true);
+        $this->forge->addKey('id', true);
         $this->forge->createTable('data_asets', true);
     }
 

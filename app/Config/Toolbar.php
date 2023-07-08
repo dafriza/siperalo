@@ -2,14 +2,15 @@
 
 namespace Config;
 
+use Myth\Auth\Collectors\Auth;
 use CodeIgniter\Config\BaseConfig;
-use CodeIgniter\Debug\Toolbar\Collectors\Database;
-use CodeIgniter\Debug\Toolbar\Collectors\Events;
-use CodeIgniter\Debug\Toolbar\Collectors\Files;
 use CodeIgniter\Debug\Toolbar\Collectors\Logs;
+use CodeIgniter\Debug\Toolbar\Collectors\Files;
+use CodeIgniter\Debug\Toolbar\Collectors\Views;
+use CodeIgniter\Debug\Toolbar\Collectors\Events;
 use CodeIgniter\Debug\Toolbar\Collectors\Routes;
 use CodeIgniter\Debug\Toolbar\Collectors\Timers;
-use CodeIgniter\Debug\Toolbar\Collectors\Views;
+use CodeIgniter\Debug\Toolbar\Collectors\Database;
 
 /**
  * --------------------------------------------------------------------------
@@ -42,6 +43,7 @@ class Toolbar extends BaseConfig
         Files::class,
         Routes::class,
         Events::class,
+        Auth::class,
     ];
 
     /**

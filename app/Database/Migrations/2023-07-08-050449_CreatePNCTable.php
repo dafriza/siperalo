@@ -26,6 +26,12 @@ class CreatePNCTable extends Migration
                 'constraint' => 30,
                 'comment' => 'Nama PNC'
             ],
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 20,
+                'unsigned' => true,
+                'comment' => 'id user'
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
@@ -41,6 +47,7 @@ class CreatePNCTable extends Migration
         ];
         $this->forge->addField($fields);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->createTable('PNC', true);
     }
 
