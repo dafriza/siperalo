@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
             $data = [
                 'username' => $faker->userName,
                 'email' => $faker->email,
-                'password_hash' => password_hash(1,PASSWORD_BCRYPT),
+                // 'password_hash' => password_hash('1',PASSWORD_BCRYPT),
+                'password_hash' => '1',
             ];
             $this->db->table('users')->insert($data);
         }
