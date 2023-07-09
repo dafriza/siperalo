@@ -9,15 +9,19 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 19; $i++) {
             $faker = Factory::create();
             $data = [
                 'username' => $faker->userName,
-                'email' => $faker->email,
-                // 'password_hash' => password_hash('1',PASSWORD_BCRYPT),
-                'password_hash' => '1',
+                'password' => password_hash('1',PASSWORD_DEFAULT),
+                'role' => 'karyawan'
             ];
             $this->db->table('users')->insert($data);
         }
+        $this->db->table('users')->insert([
+            'username' => 'super_admin',
+            'password' => password_hash('admin',PASSWORD_DEFAULT),
+            'role' => 'superadmin'
+        ]);
     }
 }
