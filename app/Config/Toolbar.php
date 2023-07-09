@@ -2,7 +2,7 @@
 
 namespace Config;
 
-use Myth\Auth\Collectors\Auth;
+// use Myth\Auth\Collectors\Auth;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Debug\Toolbar\Collectors\Logs;
 use CodeIgniter\Debug\Toolbar\Collectors\Files;
@@ -43,7 +43,7 @@ class Toolbar extends BaseConfig
         Files::class,
         Routes::class,
         Events::class,
-        Auth::class,
+        // Auth::class,
     ];
 
     /**

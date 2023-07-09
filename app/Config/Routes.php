@@ -11,7 +11,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('AuthController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -29,7 +29,6 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 
 /*
  * --------------------------------------------------------------------
@@ -44,6 +43,14 @@ $routes->get('/', 'Home::index');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+// if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+// if (is_file(APPPATH . 'Routes/'.'^[A-Za-z0-9_\-]+\.(php)$/')) {
+//     require APPPATH . 'Routes/Auth.php';
+// }
+$files = glob(APPPATH . 'Routes/*.php');
+
+foreach ($files as $file) {
+    if (preg_match('/^[A-Za-z0-9_\-]+\.(php)$/', basename($file))) {
+        require APPPATH . 'Routes/Auth.php';
+    }
 }
