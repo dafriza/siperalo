@@ -20,7 +20,7 @@ class UserModel extends Model
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType = 'App\Entities\User';
+    protected $returnType = 'App\Entities\UserEntity';
     protected $useSoftDeletes = true;
     protected $protectFields = true;
     protected $allowedFields = ['username', 'password', 'role'];

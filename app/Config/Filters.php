@@ -2,15 +2,14 @@
 
 namespace Config;
 
+use App\Filters\LoggedFilter;
 use CodeIgniter\Filters\CSRF;
+use App\Filters\IsLoggedFilter;
 use CodeIgniter\Filters\Honeypot;
-use Myth\Auth\Filters\RoleFilter;
 use CodeIgniter\Config\BaseConfig;
-use Myth\Auth\Filters\LoginFilter;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use Myth\Auth\Filters\PermissionFilter;
 
 class Filters extends BaseConfig
 {
@@ -24,9 +23,8 @@ class Filters extends BaseConfig
         'honeypot' => Honeypot::class,
         'invalidchars' => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        // 'login' => LoginFilter::class,
-        // 'role' => RoleFilter::class,
-        // 'permission' => PermissionFilter::class,
+        'logged' => IsLoggedFilter::class,
+        'onLogged' => LoggedFilter::class
     ];
 
     /**

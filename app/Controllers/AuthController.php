@@ -46,6 +46,7 @@ class AuthController extends BaseController
                 'nama' => $dataPNC['nama_pnc'],
                 'nipp' => $dataPNC['nipp'],
                 'role' => $userId['role'],
+                'active' => true
             ];
             session()->set('data',$authData);
             return redirect()->route('dashboard');
