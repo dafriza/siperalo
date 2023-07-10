@@ -14,7 +14,7 @@ class DataAsetModel extends Model
     protected $returnType       = 'App\Entities\DataAsetEntity';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['id_ralok','tipe_ralok'];
 
     // Dates
     protected $useTimestamps = true;
@@ -24,8 +24,18 @@ class DataAsetModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'id_ralok' => 'required',
+        'tipe_ralok' => 'required'
+    ];
+    protected $validationMessages   = [
+        'id_ralok' => [
+            'required' => 'ID Ralok tidak boleh kosong!'
+        ],
+        'tipe_ralok' => [
+            'required' => 'Tipe Ralok tidak boleh kosong!'
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

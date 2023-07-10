@@ -53,5 +53,8 @@ foreach ($files as $file) {
     if (preg_match('/^[A-Za-z0-9_\-]+\.(php)$/', basename($file))) {
         require APPPATH . 'Routes/Auth.php';
         require APPPATH . 'Routes/Dashboard.php';
+        require APPPATH . 'Routes/Resor.php';
+        require APPPATH . 'Routes/PNC.php';
+        require APPPATH . 'Routes/Data_aset.php';
     }
 }

@@ -15,6 +15,7 @@ class RadioLokSeeder extends Seeder
             $data[$i] = [
                 'seri_lokomotif' => 'CC-206'.$i,
                 'tanggal' => $faker->unique()->dateTimeBetween('-2 month', '+2 month')->format('Y-m-d h:i:s'),
+                'approved' => $faker->numberBetween(0,1),
                 'ralok_id' => $faker->numberBetween(1, 100),
                 'resor_id' => $faker->numberBetween(1, 20),
                 'pnc_id' => $faker->numberBetween(2, 20),

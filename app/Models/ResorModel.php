@@ -13,7 +13,7 @@ class ResorModel extends Model
     protected $returnType       = 'App\Entities\ResorEntity';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama_resor','kode_resor'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,8 +23,18 @@ class ResorModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'nama_resor' => 'required',
+        'kode_resor' => 'required'
+    ];
+    protected $validationMessages   = [
+        'nama_resor' => [
+            'required' => 'Nama Resor tidak boleh kosong!',
+        ],
+        'kode_resor' => [
+            'required' => 'Kode Resor tidak boleh kosong!',
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

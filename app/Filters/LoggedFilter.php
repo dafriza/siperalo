@@ -25,7 +25,7 @@ class LoggedFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $active = session('data')['active'];
+        $active = session('data')['active'] ?? false;
         if ($active) {
             session()->setFlashdata('error', 'Anda sudah login!');
             return redirect()->back();

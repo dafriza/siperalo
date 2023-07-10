@@ -24,9 +24,16 @@ class CreateRadioLoksTable extends Migration
             'tanggal' => [
                 'type' => 'DATETIME',
             ],
+            'approved' => [
+                'type' => 'INT',
+                'comment' => '0 = belum, 1 = sudah',
+                'default' => 0
+            ],
             'ralok_id' => [
-                'type' => 'VARCHAR',
+                'type' => 'INT',
                 'constraint' => 20,
+                'unsigned' => true,
+                'comment' => 'id ralok'
             ],
             'resor_id' => [
                 'type' => 'INT',
@@ -87,7 +94,7 @@ class CreateRadioLoksTable extends Migration
         ];
         $this->forge->addField($fields);
         $this->forge->addKey('id', true);
-        // $this->forge->addForeignKey('ralok_id', 'data_asets', 'id_ralok');
+        $this->forge->addForeignKey('ralok_id', 'data_asets', 'id');
         $this->forge->addForeignKey('resor_id', 'resors', 'id');
         $this->forge->addForeignKey('pnc_id', 'pnc', 'id');
         $this->forge->createTable('radio_loks', true);

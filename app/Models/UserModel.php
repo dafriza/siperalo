@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Models;
-
 use Config\Database;
 use CodeIgniter\Model;
+use \Tatter\Relations\Traits\ModelTrait;
 
 class UserModel extends Model
 {
@@ -33,8 +33,22 @@ class UserModel extends Model
     protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules = [];
-    protected $validationMessages = [];
+    protected $validationRules = [
+        'username' => 'required',
+        'password' => 'required',
+        'role' => 'required',
+    ];
+    protected $validationMessages = [
+        'username' => [
+            'required' => 'Username tidak boleh kosong!'
+        ],
+        'password' => [
+            'required' => 'Password tidak boleh kosong!'
+        ],
+        'role' => [
+            'required' => 'Role tidak boleh kosong!'
+        ]
+    ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
 

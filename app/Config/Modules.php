@@ -72,5 +72,7 @@ class Modules extends BaseModules
         'registrars',
         'routes',
         'services',
+        'Config' => \Config\Config::class,
+        'Tatter\Relations' => \Tatter\Relations\Relations::class,
     ];
 }
