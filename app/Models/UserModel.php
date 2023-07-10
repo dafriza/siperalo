@@ -65,13 +65,15 @@ class UserModel extends Model
             $password = password_verify($data->password, $username['password']);
             if (!$password) {
                 $data_session['status'] = false;
-                $data_session['data'] = $password;
                 return $data_session;
             } else {
                 $data_session['status'] = true;
                 $data_session['data'] = $username;
                 return $data_session;
             }
+        }else{
+            $data_session['status'] = false;
+            return $data_session;
         }
     }
 }

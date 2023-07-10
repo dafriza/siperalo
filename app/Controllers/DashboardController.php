@@ -10,5 +10,6 @@ class DashboardController extends BaseController
     {
         return view('Contents/example');
         // return view('Layouts/index');
+        // return view('Layouts/index');
     }
 }

@@ -10,7 +10,7 @@
                     </div>
                     <div class="info">
                         <!-- <a href="<?= base_url('#') ?>" class="d-block">Alexander Pierce</a> -->
-                        <a href="<?= base_url('#') ?>" class="d-block"><?= session('data')['username'] ?></a>
+                        <a href="<?= base_url('#') ?>" class="d-block"><?= session('data')['nama'] ?? '' ?></a>
                     </div>
                 </div>
 
