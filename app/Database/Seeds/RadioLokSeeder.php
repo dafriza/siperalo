@@ -9,14 +9,15 @@ class RadioLokSeeder extends Seeder
 {
     public function run()
     {
+        $data = array();
+        $faker = Factory::create();
         for ($i = 0; $i < 100; $i++) {
-            $faker = Factory::create();
-            $data = [
+            $data[$i] = [
                 'seri_lokomotif' => 'CC-206'.$i,
                 'tanggal' => $faker->unique()->dateTimeBetween('-2 month', '+2 month')->format('Y-m-d h:i:s'),
-                'ralok_id' => $faker->unique()->numberBetween(1, 100),
-                'resor_id' => $faker->unique()->numberBetween(1, 20),
-                'pnc_id' => $faker->unique()->numberBetween(1, 20),
+                'ralok_id' => $faker->numberBetween(1, 100),
+                'resor_id' => $faker->numberBetween(1, 20),
+                'pnc_id' => $faker->numberBetween(2, 20),
                 'rtc_call' => $faker->randomElement([0,1]),
                 'pc_call' => $faker->randomElement([0,1]),
                 'incoming_call' => $faker->randomElement([0,1]),
@@ -26,7 +27,7 @@ class RadioLokSeeder extends Seeder
                 'emergency_call' => $faker->randomElement([0,1]),
                 'connector' => $faker->randomElement([0,1]),
             ];
-            $this->db->table('radio_loks')->insert($data);
         }
+        $this->db->table('radio_loks')->insertBatch($data);
     }
 }

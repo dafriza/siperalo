@@ -27,12 +27,20 @@ class AuthController extends BaseController
         return $this->auth($auth);
     }
 
+    function logoutAction() {
+        session()->remove('data');
+        session()->setFlashdata('success','Logout Sukses!');
+        return redirect()->route('login');
+    }
+
     function auth($auth)
     {
         if ($auth['status']) {
             session()->setFlashdata('success', 'Berhasil Login!');
-            session()->set('data',$auth['data']);
-            return redirect()->route('dashboard');
+            $userId = $auth['data']['id'];
+            print_r($userId);
+            // session()->set('data',$auth['data']);
+            // return redirect()->route('dashboard');
         } else {
             session()->setFlashdata('error', 'Username atau Password Salah!');
             return redirect()->route('login');

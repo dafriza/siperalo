@@ -6,4 +6,4 @@ $routes = Services::routes();
 
 $routes->get('/', 'AuthController::index', ['as' => 'login']);
 $routes->post('/loginAction','AuthController::loginAction', ['as' => 'login-action']);
-$routes->post('/logout','AuthController::logoutAction',['as' => 'logout-action']);
+$routes->post('/logout','AuthController::logoutAction',['as' => 'logout']);

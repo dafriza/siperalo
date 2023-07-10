@@ -22,7 +22,7 @@ class CreateDataAsetTable extends Migration
                 'comment' => 'ID Ralok'
             ],
             'tipe_ralok' => [
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'constraint' => 20,
                 'comment' => 'Tipe Ralok'
             ],

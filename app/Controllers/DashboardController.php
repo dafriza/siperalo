@@ -8,6 +8,7 @@ class DashboardController extends BaseController
 {
     public function index()
     {
-        return view('Layouts/index');
+        return view('Contents/example');
+        // return view('Layouts/index');
     }
 }
