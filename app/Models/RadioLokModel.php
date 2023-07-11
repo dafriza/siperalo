@@ -8,14 +8,6 @@ use Tatter\Relations\Traits\ModelTrait;
 
 class RadioLokModel extends Model
 {
-     protected $db;
-     protected $builder;
-
-     public function __construct() {
-        $this->db = Database::connect();
-        $this->builder = $this->db->table($this->table);
-     }
-
     protected $DBGroup = 'default';
     protected $table = 'radio_loks';
     protected $primaryKey = 'id';
@@ -23,7 +15,7 @@ class RadioLokModel extends Model
     protected $returnType = 'App\Entities\RadioLokEntity';
     protected $useSoftDeletes = true;
     protected $protectFields = true;
-    protected $allowedFields = [];
+    protected $allowedFields = ['seri_lokomotif', 'tanggal', 'approved', 'ralok_id', 'resor_id', 'pnc_id', 'rtc_call', 'pc_call', 'incoming_call', 'clock_display', 'channel_section', 'volume', 'emergency_call', 'connector'];
 
     // Dates
     protected $useTimestamps = true;
@@ -49,14 +41,33 @@ class RadioLokModel extends Model
     protected $beforeDelete = [];
     protected $afterDelete = [];
 
-    public function user()
+    public function user($id = 0, $column_name = null)
     {
-        $res = $this->builder
-        ->join('pnc','pnc.id = pnc_id')
-        ->join('data_asets','data_asets.id = ralok_id')
-        ->join('resors','resors.id = resor_id')
-        ->get()->getResultArray();
-        return $res;
+        if ($id == 0 || is_null($column_name)) {
+            $res = self::select('*,radio_loks.id')
+                ->join('pnc', 'pnc.id = pnc_id')
+                ->join('data_asets', 'data_asets.id = ralok_id')
+                ->join('resors', 'resors.id = resor_id')
+                ->findAll();
+            return $res;
+        } else {
+            $res = self::select('*,radio_loks.id')
+                ->join('pnc', 'pnc.id = pnc_id')
+                ->join('data_asets', 'data_asets.id = ralok_id')
+                ->join('resors', 'resors.id = resor_id')
+                ->where($column_name, $id)
+                ->findAll();
+            return $res;
+        }
         // $this->hasOne('propertyName', 'model', 'foreign_key', 'local_key');
+    }
+    function userKaryawan($id)
+    {
+        $res = self::select('*,radio_loks.id')
+            ->join('pnc', 'pnc.id = pnc_id')
+            ->join('data_asets', 'data_asets.id = ralok_id')
+            ->join('resors', 'resors.id = resor_id')
+            ->find($id);
+        return $res;
     }
 }

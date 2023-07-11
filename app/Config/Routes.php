@@ -56,5 +56,6 @@ foreach ($files as $file) {
         require APPPATH . 'Routes/Resor.php';
         require APPPATH . 'Routes/PNC.php';
         require APPPATH . 'Routes/Data_aset.php';
+        require APPPATH . 'Routes/RadioLok.php';
     }
 }

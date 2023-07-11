@@ -8,7 +8,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
+        <?php if(session('data')['role'] == 'superadmin'):?>
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -75,6 +75,22 @@
             </div>
             <!-- ./col -->
         </div>
+        <?php elseif(session('data')['role'] == 'karyawan'):?>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3><?= session('data')['nama'] ?? '' ?></h3>
+                        <p>Nama Karyawan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif ;?>
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
@@ -95,18 +111,23 @@
                                     <th>Tipe Ralok</th>
                                     <th>Resor</th>
                                     <th>PNC</th>
+                                    <th>Keterangan</th>
+                                    <th>Approved</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($radioLoksWithRelations as $key => $radioLoksWithRelation) : ?>
                                 <tr>
-                                    <td><?= $key + 1;?></td>
-                                    <td><?= $radioLoksWithRelation['seri_lokomotif'];?></td>
-                                    <td><?= date_format(date_create($radioLoksWithRelation['tanggal']),"Y-M-d")?></td>
-                                    <td><?= $radioLoksWithRelation['id_ralok'];?></td>
-                                    <td><?= $radioLoksWithRelation['tipe_ralok'];?></td>
-                                    <td><?= $radioLoksWithRelation['nama_resor'];?></td>
-                                    <td><?= $radioLoksWithRelation['nama_pnc'];?></td>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $radioLoksWithRelation->seri_lokomotif ?></td>
+                                    <td><?= date_format(date_create($radioLoksWithRelation->tanggal), 'Y-M-d') ?></td>
+                                    <td><?= $radioLoksWithRelation->id_ralok ?></td>
+                                    <td><?= $radioLoksWithRelation->tipe_ralok ?></td>
+                                    <td><?= $radioLoksWithRelation->nama_resor ?></td>
+                                    <td><?= $radioLoksWithRelation->nama_pnc ?></td>
+                                    <td><?= $radioLoksWithRelation->status == 'Baik' ? 'Baik' : $radioLoksWithRelation->status . ' = ' . $radioLoksWithRelation->numb ?>
+                                    </td>
+                                    <td><?= $radioLoksWithRelation->approved == 1 ? 'Diterima' : 'Pending' ?></td>
                                 </tr>
                                 <?php endforeach;?>
                             </tbody>
@@ -119,6 +140,8 @@
                                     <th>Tipe Ralok</th>
                                     <th>Resor</th>
                                     <th>PNC</th>
+                                    <th>Keterangan</th>
+                                    <th>Approved</th>
                                 </tr>
                             </tfoot>
                         </table>

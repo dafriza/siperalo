@@ -43,8 +43,9 @@ class AuthController extends BaseController
             $userId = $auth['data'];
             $dataPNC = $this->pncModel->find($userId['id']);
             $authData = [
-                'nama' => $dataPNC['nama_pnc'],
-                'nipp' => $dataPNC['nipp'],
+                'id' => $dataPNC->id,
+                'nama' => $dataPNC->nama_pnc,
+                'nipp' => $dataPNC->nipp,
                 'role' => $userId['role'],
                 'active' => true
             ];

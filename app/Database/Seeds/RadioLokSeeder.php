@@ -18,7 +18,7 @@ class RadioLokSeeder extends Seeder
                 'approved' => $faker->numberBetween(0,1),
                 'ralok_id' => $faker->numberBetween(1, 100),
                 'resor_id' => $faker->numberBetween(1, 20),
-                'pnc_id' => $faker->numberBetween(2, 20),
+                'pnc_id' => $faker->numberBetween(1, 19),
                 'rtc_call' => $faker->randomElement([0,1]),
                 'pc_call' => $faker->randomElement([0,1]),
                 'incoming_call' => $faker->randomElement([0,1]),
