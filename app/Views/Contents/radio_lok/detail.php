@@ -12,8 +12,13 @@
                         <h3 class="card-title"><?= $title ?></h3>
                     </div> <!-- /.card-header -->
                     <div class="card-body">
+                        <?php if(session('data')['role'] == 'superadmin'):?>
                         <a href="<?= base_url(url_to('radio_lok.index')) ?>" class="mr-2"><i
                                 class="fas fa-arrow-left"></i> Kembali</a>
+                        <?php elseif(session('data')['role'] == 'karyawan'):?>
+                        <a href="<?= base_url(url_to('radio_lok.laporan')) ?>" class="mr-2"><i
+                                class="fas fa-arrow-left"></i> Kembali</a>
+                        <?php endif ;?>
                         <hr>
                         <table>
                             <tr>
@@ -51,7 +56,9 @@
                             </tr>
                             <tr>
                                 <td>Incoming Call </td>
-                                <td>: <?= $findRadioLok->incoming_call == 1 ? 'Baik' : 'Tombol Incoming tidak berfungsi' ?></td>
+                                <td>:
+                                    <?= $findRadioLok->incoming_call == 1 ? 'Baik' : 'Tombol Incoming tidak berfungsi' ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Clock Display </td>
@@ -59,7 +66,8 @@
                             </tr>
                             <tr>
                                 <td>Channel Section </td>
-                                <td>: <?= $findRadioLok->channel_section == 1 ? 'Baik' : 'Channel tidak berfungsi' ?></td>
+                                <td>: <?= $findRadioLok->channel_section == 1 ? 'Baik' : 'Channel tidak berfungsi' ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Volume </td>
@@ -67,7 +75,9 @@
                             </tr>
                             <tr>
                                 <td>Emergency Call </td>
-                                <td>: <?= $findRadioLok->emergency_call == 1 ? 'Baik' : 'Tombol Emergency tidak berfungsi' ?></td>
+                                <td>:
+                                    <?= $findRadioLok->emergency_call == 1 ? 'Baik' : 'Tombol Emergency tidak berfungsi' ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Connector </td>

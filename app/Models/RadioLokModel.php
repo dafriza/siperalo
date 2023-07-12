@@ -25,8 +25,63 @@ class RadioLokModel extends Model
     protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules = [];
-    protected $validationMessages = [];
+    protected $validationRules = [
+        'seri_lokomotif' => 'required',
+        'tanggal' => 'required',
+        'approved' => 'permit_empty',
+        'ralok_id' => 'required',
+        'resor_id' => 'required',
+        'pnc_id' => 'required',
+        'rtc_call' => 'required',
+        'pc_call' => 'required',
+        'incoming_call' => 'required',
+        'clock_display' => 'required',
+        'channel_section' => 'required',
+        'volume' => 'required',
+        'emergency_call' => 'required',
+        'connector' => 'required',
+    ];
+    protected $validationMessages = [
+        'seri_lokomotif' => [
+            'required' => 'Seri Lokomotif harus diisi!'
+        ],
+        'tanggal' => [
+            'required' => 'Tanggal harus diisi!'
+        ],
+        'ralok_id' => [
+            'required' => 'Ralok ID harus diisi!'
+        ],
+        'resor_id' => [
+            'required' => 'Resor ID harus diisi!'
+        ],
+        'pnc_id' => [
+            'required' => 'PNC ID harus diisi!'
+        ],
+        'rtc_call' => [
+            'required' => 'RTC Call harus diisi!'
+        ],
+        'pc_call' => [
+            'required' => 'PC Call harus diisi!'
+        ],
+        'incoming_call' => [
+            'required' => 'Incoming Call harus diisi!'
+        ],
+        'clock_display' => [
+            'required' => 'Clock Display harus diisi!'
+        ],
+        'channel_section' => [
+            'required' => 'Channel Section harus diisi!'
+        ],
+        'volume' => [
+            'required' => 'Volume harus diisi!'
+        ],
+        'emergency_call' => [
+            'required' => 'Emergency Call harus diisi!'
+        ],
+        'connector' => [
+            'required' => 'Connector harus diisi!'
+        ],
+    ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
 

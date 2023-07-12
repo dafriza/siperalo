@@ -69,8 +69,8 @@
                 </li>
                 <?php elseif(session('data')['role'] == 'karyawan'): ;?>
                 <li class="nav-item menu-open">
-                    <a href="<?= base_url(url_to('radio_lok.add')) ?>"
-                        class="nav-link <?= url_to('radio_lok.add') == current_url() ? 'active' : '' ?>">
+                    <a href="<?= base_url(url_to('radio_lok.laporan')) ?>"
+                        class="nav-link <?= url_to('radio_lok.laporan') == current_url() ? 'active' : '' ?>">
                         <i class="fas fa-upload"></i>
                         <p>
                             Laporan
