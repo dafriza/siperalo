@@ -14,7 +14,22 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <?= form_open(url_to('pnc.update')) ?>
+                                <?= form_open(url_to('pnc.store')) ?>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select name="role" class="form-control" id="role">
+                                        <option value="karyawan">Karyawan</option>
+                                        <option value="superadmin">Superadmin</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="nipp">NIPP</label>
                                     <input type="text" class="form-control" id="nipp" name="nipp">
@@ -22,10 +37,6 @@
                                 <div class="form-group">
                                     <label for="nama_pnc">Nama PNC</label>
                                     <input type="text" class="form-control" id="nama_pnc" name="nama_pnc">
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_id">ID User</label>
-                                    <input type="number" class="form-control" id="user_id" name="user_id">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>

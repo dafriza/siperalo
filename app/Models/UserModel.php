@@ -3,19 +3,10 @@
 namespace App\Models;
 use Config\Database;
 use CodeIgniter\Model;
-use \Tatter\Relations\Traits\ModelTrait;
+use Tatter\Relations\Traits\ModelTrait;
 
 class UserModel extends Model
 {
-    protected $db;
-    protected $builder;
-
-    public function __construct()
-    {
-        $this->db = Database::connect();
-        $this->builder = $this->db->table('users');
-    }
-
     protected $DBGroup = 'default';
     protected $table = 'users';
     protected $primaryKey = 'id';
@@ -40,14 +31,14 @@ class UserModel extends Model
     ];
     protected $validationMessages = [
         'username' => [
-            'required' => 'Username tidak boleh kosong!'
+            'required' => 'Username tidak boleh kosong!',
         ],
         'password' => [
-            'required' => 'Password tidak boleh kosong!'
+            'required' => 'Password tidak boleh kosong!',
         ],
         'role' => [
-            'required' => 'Role tidak boleh kosong!'
-        ]
+            'required' => 'Role tidak boleh kosong!',
+        ],
     ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
@@ -71,8 +62,7 @@ class UserModel extends Model
             return $data_session;
         }
         $username =
-            $this->builder
-                ->where('username', $data->username)
+            self::where('username', $data->username)
                 ->get()
                 ->getResultArray()[0] ?? false;
         if (!empty($username)) {
@@ -85,7 +75,7 @@ class UserModel extends Model
                 $data_session['data'] = $username;
                 return $data_session;
             }
-        }else{
+        } else {
             $data_session['status'] = false;
             return $data_session;
         }
