@@ -50,14 +50,14 @@
                                 </tr>
                                 <?php endforeach;?>
                             </tbody>
-                            <tfoot>
+                            <!-- <tfoot>
                                 <tr>
                                     <th>No</th>
                                     <th>ID Ralok</th>
                                     <th>Tipe Ralok</th>
                                     <th>Action</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> -->
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -86,7 +86,7 @@
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["pdf"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 </script>
 <?= $this->endSection() ?>
